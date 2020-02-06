@@ -165,24 +165,24 @@ unsigned int LastEEPromAddr=EEPromDataStartAddr;
 /****************** SETUP ******************************/
 void setup() {
   pinMode(BattRly1,OUTPUT);		//init relays
-	pinMode(BattRly2,OUTPUT);
-	pinMode(BattRly3,OUTPUT);
-	pinMode(BattRly4,OUTPUT);
-	digitalWrite(BattRly1, HIGH);  //active low
+  pinMode(BattRly2,OUTPUT);
+  pinMode(BattRly3,OUTPUT);
+  pinMode(BattRly4,OUTPUT);
+  digitalWrite(BattRly1, HIGH);  //active low
   digitalWrite(BattRly2, HIGH);
   digitalWrite(BattRly3, HIGH);
   digitalWrite(BattRly4, HIGH);
   
-	pinMode(A0,OUTPUT);	//set analog pins as outputs for LEDs
-	pinMode(A1,OUTPUT);
-	pinMode(A2,OUTPUT);
-	pinMode(A3,OUTPUT);
+  pinMode(A0,OUTPUT);	//set analog pins as outputs for LEDs
+  pinMode(A1,OUTPUT);
+  pinMode(A2,OUTPUT);
+  pinMode(A3,OUTPUT);
   digitalWrite(A0,LOW);	// active high so turn off
   digitalWrite(A1,LOW);	
   digitalWrite(A2,LOW);
   digitalWrite(A3,LOW);
 
-	pinMode (BattSelectSw1, INPUT_PULLUP); //setup Batt Select pushbutton switches
+  pinMode (BattSelectSw1, INPUT_PULLUP); //setup Batt Select pushbutton switches
   pinMode (BattSelectSw2, INPUT_PULLUP);
   pinMode (BattSelectSw3, INPUT_PULLUP);
   pinMode (BattSelectSw4, INPUT_PULLUP);
@@ -223,8 +223,6 @@ void setup() {
    BTSerial.begin(115200);
   	delay(200);
   //SetSerial9600();
-
-  Serial.print(F("freeMemory()="));Serial.println(freeMemory()); 
 
 }
 
@@ -1286,4 +1284,3 @@ void ReadDataFromEEProm(){
                delay(50);
          } while (x <= LastEEPromAddr); 
 }
-
