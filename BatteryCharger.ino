@@ -162,10 +162,6 @@ bool OneMinDataFlag = false;
 const byte EEPromDataStartAddr = 4;
 unsigned int LastEEPromAddr=EEPromDataStartAddr;
 
-//Memory check
-uint8_t * heapptr, * stackptr;
-uint8_t dheapptr, dstackptr;
-
 /****************** SETUP ******************************/
 void setup() {
   pinMode(BattRly1,OUTPUT);		//init relays
