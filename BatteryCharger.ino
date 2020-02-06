@@ -35,7 +35,6 @@ SOC	12V - Open Circuit for 4 hours prior to measuring or until V stabilizes
 
 // include the library code
 #include <Wire.h> 
-#include <MemoryFree.h>
 #include <LiquidCrystal_I2C.h>
 LiquidCrystal_I2C lcd(0x27,20,4);
 #include <DS3232RTC.h> // used for Alarm functions and now time/date
@@ -201,8 +200,6 @@ void setup() {
   
   pinMode(8, INPUT); //BT Serial Rx from BT module
   pinMode(9, OUTPUT);
-
-  Serial.print(F("freeMemory()="));Serial.println(freeMemory()); 
 
   buffer_position = 0;	// initialize serial comm input buffer for setting time/cals
 
@@ -1295,11 +1292,3 @@ void ReadDataFromEEProm(){
          } while (x <= LastEEPromAddr); 
 }
 
-void check_mem() {
-  stackptr = (uint8_t *)malloc(4);          // use stackptr temporarily
-  heapptr = stackptr;                     // save value of heap pointer
-  free(stackptr);      // free up the memory again (sets stackptr to 0)
-  stackptr =  (uint8_t *)(SP);           // save value of stack pointer
-  dstackptr=stackptr;
-  dheapptr=heapptr;
-}
