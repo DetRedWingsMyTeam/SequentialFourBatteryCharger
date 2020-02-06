@@ -1,0 +1,22 @@
+Here are the locations to place the libaries;
+
+Using library Wire at version 1.0 in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\Wire 
+
+Using library MemoryFree in folder: C:\GCB@Syn\Arduino\libraries\MemoryFree (legacy)
+
+Using library LiquidCrystal_I2C at version 1.1.2 in folder: C:\GCB@Syn\Arduino\libraries\LiquidCrystal_I2C 
+
+Using library DS3232RTC in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\DS3232RTC (legacy)
+
+Using library Time at version 1.5 in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\Time 
+
+Using library Adafruit_MCP4725 at version 1.0.2 in folder: C:\GCB@Syn\Arduino\libraries\Adafruit_MCP4725 
+
+Using library Adafruit_ADS1015 at version 1.0.0 in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\Adafruit_ADS1015 
+
+Using library Adafruit_INA219 at version 1.0.6 in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\Adafruit_INA219 
+
+Using library AT24CX in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\AT24CX (legacy)
+
+Using library SoftwareSerial at version 1.0 in folder: C:\GCB@Syn\Arduino\hardware\arduino\avr\libraries\SoftwareSerial 
+
