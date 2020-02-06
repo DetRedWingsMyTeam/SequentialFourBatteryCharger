@@ -1,2 +1,2 @@
 # SequentialFourBatteryCharger
-Battery Charger for 4 Batteries in Sequence
+Battery Charger for Charging 4 Sealed Lead Acid Batteries in Sequence
