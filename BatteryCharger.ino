@@ -1,7 +1,6 @@
 /** Author:C.S.Robbins
  * version: 1.18.0 Arduino Nano
- * date: 2/12/2019 to 5/25/2019, 10/23/2019, 11/17/2019, 12/11/2019, 12/23/2019, 1/25/2020
- * 7/18/19 - added ext bluetooth module, changed ext data acq to 1 min interval, 8/25/19 chged to 2 amps
+ *
  * Programming Arduino Nano
     Arduino Nano
     ATMega 328 for Nano w/Bluetooth else ATMega 328 (Old Bootloader)
@@ -53,7 +52,7 @@ Adafruit_ADS1115 ads1115; //A/D module 16 bit 4 chan Range: +/- 6.144V 1 bit = 0
 Adafruit_MCP4725 dac; // Digital to Analog DAC 0 to 4095, 0 to 5 volts
 
 /*************** VARIABLES ***************************/
-const float Version=1.17;
+const float Version=1.18;
 
 // Arrays are index 0 but we use 1 as start so need array dim +1
 #define BUFFER_SIZE 10  //serial port
