@@ -1,6 +1,9 @@
 /** Author:C.S.Robbins
- * version: 1.18.0 Arduino Nano
- *
+ * version: 1.19.0 Arduino Nano
+ * Aug 8, 2020 - fixed bug in switching modes using pb. 
+ *             - limit max current in Mode 2 to 2000ma
+ *             - limit max current in Mode 4 to 2000ma             
+ *             
  * Programming Arduino Nano
     Arduino Nano
     ATMega 328 for Nano w/Bluetooth else ATMega 328 (Old Bootloader)
@@ -341,9 +344,9 @@ void ChargeBattery(){
           						{BatteryChargeStage=4; //going from 14.4 to 13.4 Stage 4
           						SetSpecificDACVoltage(Stage4VThreshold);}
 					    }
-	          else if (BattVolts[ActiveBatt] < Stage2VThreshold) //if Voltage < 14.4 volts then raise voltage
+	          else if (BattVolts[ActiveBatt] < Stage2VThreshold && current_mAINA219 < 2000) //if Voltage < 14.4 volts and if current < 2A then raise voltage
 		            { DACVoltageSetToTarget(true, Stage2VThreshold);}
-	          else if (BattVolts[ActiveBatt] > Stage2VThreshold) //if Voltage > 14.4 volts then lower voltage
+	          else if (BattVolts[ActiveBatt] > Stage2VThreshold || current_mAINA219 > 2000) //if Voltage > 14.4 volts or current > 2A then lower voltage
 		            { DACVoltageSetToTarget(false, Stage2VThreshold);}
        }      
     else if (BatteryChargeStage==3) //maintain 13.65 volts until current < 100ma but move to 13.65 slowly
@@ -373,9 +376,9 @@ void ChargeBattery(){
        {  if (ChargeStageTimeElapsedMins > 30)
 	            //see if should charge another battery
 	             { CheckNextActiveBattery(); ChargeStageTimeElapsedMins=0; Stage1ChargeTime=0;}
-          else if (BattVolts[ActiveBatt] < Stage4VThreshold) //if Voltage < 13.4 volts then raise voltage
+          else if (BattVolts[ActiveBatt] < Stage4VThreshold  && current_mAINA219 < 2000 ) //if Voltage < 13.4 volts and if current < 2A then raise voltage 
 	             { DACVoltageSetToTarget(true,Stage4VThreshold);}
-          else if (BattVolts[ActiveBatt] > Stage4VThreshold) //if Voltage > 13.4 volts then lower voltage
+          else if (BattVolts[ActiveBatt] > Stage4VThreshold || current_mAINA219 > 2000) //if Voltage > 13.4 volts or current > 2A then lower voltage
 	             { DACVoltageSetToTarget(false,Stage4VThreshold);}
        }
   else if (BatteryChargeStage==5) //Monitor batt mode to check SOC 
@@ -510,7 +513,7 @@ void checkBattTypeSwitch(){
      }
   else if(TypeSwNewClosureFlag==true && digitalRead(MonitorChargeSelectSwitch)==HIGH) // use type sw in charging mode to move to next stage
         {BatteryChargeStage=BatteryChargeStage+1; 
-            if (BatteryChargeStage==6) {TurnOnRelay(LastBatteryActive);BatteryChargeStage=1;}
+            if (BatteryChargeStage>=6) {TurnOnRelay(LastBatteryActive);BatteryChargeStage=1;}
             ChargeStageTimeElapsedMins=0;
         } 
 }
